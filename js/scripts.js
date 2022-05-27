@@ -3,6 +3,7 @@ let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   
+  // Other functions remain here
   function add(pokemon) {
     if (
       typeof pokemon === "object" &&
@@ -29,9 +30,10 @@ let pokemonRepository = (function () {
     addEventListener(button,pokemon); 
   }
 
+  //this function will fetch data from API, then add each pokemon in the fetched data to pokemonList
   function loadList() {
-    return fetch(apiUrl).then(function (response) {
-      return response.json();
+    return fetch(apiUrl).then(function (response) {//sends a message to the specified API, requesting the list of Pokemon
+      return response.json();// This returns a promise!
     }).then(function (json) {
       json.results.forEach(function (item) {
         let pokemon = {
@@ -41,7 +43,7 @@ let pokemonRepository = (function () {
         add(pokemon);
       });
     }).catch(function(e) {
-      console.error(e);
+      console.error(e);// Error
     })
   }
 
@@ -50,6 +52,7 @@ let pokemonRepository = (function () {
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
+      // Now we add the details to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
@@ -64,6 +67,7 @@ let pokemonRepository = (function () {
     });
   }
   
+  //this function is executed when a user clicks the Pokemon
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
@@ -82,6 +86,7 @@ let pokemonRepository = (function () {
 })();
 
 pokemonRepository.loadList().then(function() {
+  // Now the data is loaded!
   pokemonRepository.getAll().forEach(function (pokemon) {
       pokemonRepository.addListItem(pokemon);
   });
