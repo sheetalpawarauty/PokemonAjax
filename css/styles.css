@@ -1,6 +1,7 @@
 *{
 	box-sizing: border-box;
 }
+
 body {
 	/*background-color: lightgray ;*/
 	font-family: 'Rubik',sans-serif;
@@ -14,6 +15,7 @@ body {
     padding-top: 10%;
     padding-left: 30%;
 }
+
 .button-class {
 	background-color:darkcyan;
 	border: none;
@@ -30,6 +32,7 @@ body {
 	color: black;
 	border: 2px solid #4caf50;
 }
+
 .header {
 	position: fixed;
 	top: 0;
@@ -39,6 +42,7 @@ body {
 	display: flex;
 	justify-content: center;
 }
+
 .footer {
 	position: fixed;
 	left: 0;
